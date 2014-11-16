@@ -10,7 +10,7 @@ import java.nio.file.Files;
 /**
  * Created by clairton on 11/15/14.
  */
-public class Read implements Task, Serializable {
+public class Read implements Task<String>, Serializable {
 
     private static final long serialVersionUID = 2272L;
 
@@ -22,7 +22,7 @@ public class Read implements Task, Serializable {
     }
 
     @Override
-    public Object execute() {
+    public String execute() {
         StringBuilder sb = new StringBuilder();
         try {
             Files.lines(file.toPath())
