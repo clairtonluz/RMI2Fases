@@ -18,15 +18,15 @@ public abstract class Server implements Compute {
 
     @Override
     public <T> T executeTask(Task<T> t) {
-        System.out.printf("Executando no %s:%d%n", this.name, this.port);
-        return t.execute();
+            System.out.printf("Executando no %s:%d%n", this.name, this.port);
+            return t.execute();
     }
 
     public void iniciarServer() {
         registrarRMI();
         try {
             Compute stub = (Compute) UnicastRemoteObject
-                    .exportObject(this, port);
+                    .exportObject(this, 0);
             Registry registry = LocateRegistry.getRegistry(port);
             registry.rebind(name, stub);
             System.out.printf("Server rodando %s:%d%n", this.name, this.port);

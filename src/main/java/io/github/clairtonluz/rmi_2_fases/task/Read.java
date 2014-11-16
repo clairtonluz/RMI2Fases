@@ -26,7 +26,7 @@ public class Read implements Task<String>, Serializable {
         StringBuilder sb = new StringBuilder();
         try {
             Files.lines(file.toPath())
-                    .forEach(s -> sb.append(s));
+                    .forEach(s -> sb.append(s).append(System.getProperty("line.separator")));
         } catch (IOException e) {
             e.printStackTrace();
         }
