@@ -11,7 +11,7 @@ import io.github.clairtonluz.rmi_2_fases.server.Participante;
 public class Main {
 
     public static void main(String[] args) {
-        Server coordenador = new io.github.clairtonluz.rmi_2_fases.server.Coordenador(Name.CORDENADOR.name(), Name.CORDENADOR.getPort());
+        Server coordenador = new Coordenador(Name.CORDENADOR.name(), Name.CORDENADOR.getPort());
         Server p1 = new Participante(Name.PARTICIPANTE_1.name(), Name.PARTICIPANTE_1.getPort());
         Server p2 = new Participante(Name.PARTICIPANTE_2.name(), Name.PARTICIPANTE_2.getPort());
 
