@@ -5,4 +5,6 @@ package io.github.clairtonluz.rmi_2_fases.compute;
  */
 public interface Task<T> {
     T execute();
+    char getTipo();
+    boolean isSucesso();
 }

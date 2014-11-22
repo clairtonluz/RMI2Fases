@@ -23,9 +23,9 @@ public class Coordenador extends Server {
     }
 
     public <T> T balance(Task<T> t){
-        T result = executarNoServer(currentServer, t);
-        currentServer = currentServer == Name.PARTICIPANTE_1 ? Name.PARTICIPANTE_2 : Name.PARTICIPANTE_1;
-        return result;
+        T result1 = executarNoServer(Name.PARTICIPANTE_1, t);
+        T result2 = executarNoServer(Name.PARTICIPANTE_2, t);
+        return result2;
     }
 
     private <T> T executarNoServer(Name server, Task<T> t) {

@@ -15,6 +15,8 @@ public class Write implements Task<String>, Serializable {
     private String file;
     private String text;
 
+    private boolean sucesso;
+
     public Write(String file, String text) {
         super();
         this.file = file;
@@ -22,13 +24,29 @@ public class Write implements Task<String>, Serializable {
     }
 
     @Override
-    public String execute() {
+    public synchronized String execute() {
         try {
             Files.write(new File(file).toPath(), text.getBytes());
+            setSucesso(true);
             return "success";
         } catch (IOException e) {
+            setSucesso(false);
             e.printStackTrace();
             return "fail";
         }
+    }
+
+    @Override
+    public char getTipo() {
+        return 'W';
+    }
+
+    @Override
+    public boolean isSucesso() {
+        return sucesso;
+    }
+
+    public void setSucesso(boolean sucesso) {
+        this.sucesso = sucesso;
     }
 }
