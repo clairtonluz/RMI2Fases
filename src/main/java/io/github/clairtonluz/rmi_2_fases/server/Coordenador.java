@@ -22,10 +22,22 @@ public class Coordenador extends Server {
         return balance(t);
     }
 
-    public <T> T balance(Task<T> t){
-        T result1 = executarNoServer(Name.PARTICIPANTE_1, t);
-        T result2 = executarNoServer(Name.PARTICIPANTE_2, t);
-        return result2;
+    public <T> T balance(Task<T> t) {
+        T result = null;
+
+        System.out.println(t.getTipo());
+        if (t.getTipo() == 'R') {
+            result = executarNoServer(Name.PARTICIPANTE_1, t);
+            T result2 = executarNoServer(Name.PARTICIPANTE_2, t);
+        } else {
+            System.out.println("write");
+            synchronized (t) {
+                System.out.println("SICRONO");
+                result = executarNoServer(Name.PARTICIPANTE_1, t);
+                T result2 = executarNoServer(Name.PARTICIPANTE_2, t);
+            }
+        }
+        return result;
     }
 
     private <T> T executarNoServer(Name server, Task<T> t) {

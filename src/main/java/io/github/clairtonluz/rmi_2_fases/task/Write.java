@@ -4,6 +4,7 @@ import io.github.clairtonluz.rmi_2_fases.compute.Task;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 /**
@@ -24,9 +25,9 @@ public class Write implements Task<String>, Serializable {
     }
 
     @Override
-    public synchronized String execute() {
+    public String execute() {
         try {
-            Files.write(new File(file).toPath(), text.getBytes());
+            Files.write(new File(file).toPath(), text.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
             setSucesso(true);
             return "success";
         } catch (IOException e) {
