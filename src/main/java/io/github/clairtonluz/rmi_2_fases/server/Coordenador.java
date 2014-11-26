@@ -24,8 +24,6 @@ public class Coordenador extends Server {
 
     public <T> T balance(Task<T> t) {
         T result = null;
-
-        System.out.println(t.getTipo());
         if (t.getTipo() == 'R') {
             result = executarNoServer(Name.PARTICIPANTE_1, t);
             T result2 = executarNoServer(Name.PARTICIPANTE_2, t);
