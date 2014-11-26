@@ -30,9 +30,7 @@ public class Coordenador extends Server {
             result = executarNoServer(Name.PARTICIPANTE_1, t);
             T result2 = executarNoServer(Name.PARTICIPANTE_2, t);
         } else {
-            System.out.println("write");
             synchronized (t) {
-                System.out.println("SICRONO");
                 result = executarNoServer(Name.PARTICIPANTE_1, t);
                 T result2 = executarNoServer(Name.PARTICIPANTE_2, t);
             }
